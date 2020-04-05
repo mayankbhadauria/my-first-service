@@ -120,3 +120,26 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+  resources: # CloudFormation template syntax from here on.
+    Resources:
+      usersTable: 
+        Type: AWS::DynamoDB::Table
+        Properties:
+          TableName: usersTable
+          AttributeDefinitions:
+            - AttributeName: userId
+              AttributeType: S
+            - AttributeName: name
+              AttributeType: S
+            - AttributeName: email
+              AttributeType: S
+            - AttributeName: phone
+              AttributeType: S
+            - AttributeName: address
+              AttributeType: S
+          KeySchema:
+            - AttributeName: userId
+              KeyType: HASH
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
